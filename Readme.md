@@ -62,3 +62,26 @@ grpcurl -d '{"string":"ABc"}{"string":"dEf"}{"string":"ghI"}' -plaintext localho
 ```bash
 grpcurl -H 'Authorization: 1234' -d '{"string":"World"}' -plaintext localhost:9090 de.saschaufer.grpc_example.proto.auth.AuthService/call
 ```
+
+## Bidirectional Streaming: Chat example
+
+This example demonstrates a long-lived bidirectional gRPC stream:
+clients send `ChatMessage` and the server broadcasts `ChatEvent` to all connected clients
+(including simple system events for join/leave).
+
+### Run server
+```bash
+mvn spring-boot:run
+```
+
+### Run clients
+
+```bash
+java -cp "target/classes:target/dependency/*" de.saschaufer.grpc_example.clients.ChatCliClient localhost 9090 alice
+```
+
+```bash
+java -cp "target/classes:target/dependency/*" de.saschaufer.grpc_example.clients.ChatCliClient localhost 9090 bob
+```
+
+
