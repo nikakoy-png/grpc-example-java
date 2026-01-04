@@ -4,7 +4,7 @@ import com.google.protobuf.ByteString;
 import de.saschaufer.grpc_example.config.AppProperties;
 import de.saschaufer.grpc_example.proto.file_download.File;
 import de.saschaufer.grpc_example.proto.file_download.FileDownloadServiceGrpc;
-import de.saschaufer.grpc_example.proto.file_download.MetaData;
+import de.saschaufer.grpc_example.proto.file_download.Metadata;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class FileDownloadService extends FileDownloadServiceGrpc.FileDownloadSer
     private final AppProperties appProperties;
 
     @Override
-    public void download(final MetaData metaData, final StreamObserver<File> responseObserver) {
+    public void download(final Metadata metaData, final StreamObserver<File> responseObserver) {
 
         final String fileName = "%s.%s".formatted(metaData.getName(), metaData.getType());
         final Path filePath = appProperties.filesPath().resolve(fileName);

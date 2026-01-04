@@ -3,7 +3,7 @@ package de.saschaufer.grpc_example.endpoints;
 import com.google.protobuf.ByteString;
 import de.saschaufer.grpc_example.proto.file_download.File;
 import de.saschaufer.grpc_example.proto.file_download.FileDownloadServiceGrpc;
-import de.saschaufer.grpc_example.proto.file_download.MetaData;
+import de.saschaufer.grpc_example.proto.file_download.Metadata;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -64,7 +64,7 @@ class FileDownloadServiceTest {
 
         createLargeFile(testfileSource);
 
-        final MetaData metaData = MetaData.newBuilder().setName(filenameSource).setType(extensionSource).build();
+        final Metadata metaData = Metadata.newBuilder().setName(filenameSource).setType(extensionSource).build();
 
         final CountDownLatch latch = new CountDownLatch(1);
         final long startTime = System.currentTimeMillis();

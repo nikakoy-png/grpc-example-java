@@ -68,7 +68,7 @@ class FileUploadServiceTest {
 
         // Send metadata
         final FileUploadRequest metadata = FileUploadRequest.newBuilder()
-                .setMetadata(MetaData.newBuilder()
+                .setMetadata(Metadata.newBuilder()
                         .setName(filenameTarget)
                         .setType(extensionTarget).build())
                 .build();
